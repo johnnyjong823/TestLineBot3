@@ -34,9 +34,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
-	if _, err := bot.PushMessage("U2c68fd429a99dceccc8956571baa7d00", linebot.NewTextMessage("hello")).Do(); err != nil {
-		txt= txt + err.Error()
-	}
+	
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
@@ -47,12 +45,15 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!"+txt+"  "+event.Source.UserID+"   "+event.ReplyToken)).Do(); err != nil {
 				//	log.Print(err)
 				//}
-				var txt = message.Text+","+answers[rand.Intn(len(answers))]
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(txt + message.userId)).Do(); err != nil {
+				var txt = message.Text+","+answers[rand.Intn(len(answers))] + event.source.userId
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(txt)).Do(); err != nil {
 					log.Print(err)
 				}
 				
 			}
+		}
+		if _, err := bot.PushMessage("U2c68fd429a99dceccc8956571baa7d00", linebot.NewTextMessage("hello")).Do(); err != nil {
+		txt= txt + err.Error()
 		}
 		if event.Type == linebot.EventTypeFollow {
 			var text = "Hi!歡迎使用魔物獵人LINE@BOT\n"+

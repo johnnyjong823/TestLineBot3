@@ -16,9 +16,9 @@ func main() {
 	var err error
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
 	log.Println("Bot:", bot, " err:", err)
-	if _, err := bot.PushMessage("U2c68fd429a99dceccc8956571baa7d00", linebot.NewTextMessage("hello")).Do(); err != nil {
-		log.Print(err)
-		}
+	//if _, err := bot.PushMessage("U2c68fd429a99dceccc8956571baa7d00", linebot.NewTextMessage("hello")).Do(); err != nil {
+	//	log.Print(err)
+	//	}
 	http.HandleFunc("/callback", callbackHandler)
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf(":%s", port)
@@ -43,11 +43,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case *linebot.TextMessage:
 				//var txt = Send(message.Text);
 				//rand.Seed(99)
-				answers := []string{"彥達好帥","彥達好棒","彥達好有錢","彥達開跑車","彥達住豪宅","彥達100分","彥達高材生","彥達金城武","彥達劉德華"}
+				answers := []string{"好帥","好棒","好有錢","開跑車","住豪宅","100分","高材生","金城武","劉德華","大正妹","女神","男神","網美"}
 				//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!"+txt+"  "+event.Source.UserID+"   "+event.ReplyToken)).Do(); err != nil {
 				//	log.Print(err)
 				//}
-				var txt = message.Text+","+answers[rand.Intn(len(answers))] + event.Source.UserID
+				var txt = message.Text+answers[rand.Intn(len(answers))] + event.Source.UserID
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(txt)).Do(); err != nil {
 					log.Print(err)
 				}
@@ -56,12 +56,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		
 		if event.Type == linebot.EventTypeFollow {
-			var text = "Hi!歡迎使用魔物獵人LINE@BOT\n"+
-				"指令:\n"+
-				"@魔物名稱\n"+
-				"/功能\n"+
-				
-				"\n若不知道該如何下指令，請輸入/help查詢。"
+			var text = "Hi!請輸入一個人名，就會出現意想不到的結果喔!"
 			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(text)).Do(); err != nil {
 				log.Print(err)
 			}

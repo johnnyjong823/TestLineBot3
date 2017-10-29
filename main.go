@@ -49,7 +49,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						    "欸幹嘛不要這樣啊","都欺負我","欸我不是二分隊的啊",
 						    "我沒有要簽啊","小心我把你們埋進土裡",
 						    "013 洞么參 1800我告訴我家狗我想尿尿它要帶我去，預計1830回家",
-						    "冒牌洞么參呢？","我一身哈味"}
+						    "冒牌洞么參呢？","我一身哈味","小姐 要不要援交?","看甚麼看 在看把你埋進土裡",
+						    "你千萬要相信2000字的心得"}
 				//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!"+txt+"  "+event.Source.UserID+"   "+event.ReplyToken)).Do(); err != nil {
 				//	log.Print(err)
 				//}

@@ -51,7 +51,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!"+txt+"  "+event.Source.UserID+"   "+event.ReplyToken)).Do(); err != nil {
 				//	log.Print(err)
 				//}
-				if message.Text == "/袁嘉豪"{
+				if strings.Contains(message.Text, "哈哈哈"){
 					var txt =answers[rand.Intn(len(answers))] 
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(txt)).Do(); err != nil {
 						log.Print(err)

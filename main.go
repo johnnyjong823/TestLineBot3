@@ -43,7 +43,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case *linebot.TextMessage:
 				//var txt = Send(message.Text);
 				//rand.Seed(99)
-				answers := []string{"洞參么在此誰敢放肆","就跟你說要有外野了","洞妖三剛到步校","打手槍次數是零","欸幹嘛不要這樣啊","都欺負我","欸我不是二分隊的啊","我沒有要簽啊","小心我把你們埋進土裡"}
+				answers := []string{"洞參么在此誰敢放肆","就跟你說要有外野了",
+						    "洞妖三剛到步校","打手槍次數是零",
+						    "欸幹嘛不要這樣啊","都欺負我","欸我不是二分隊的啊",
+						    "我沒有要簽啊","小心我把你們埋進土裡",
+						    "013 洞妖三 1800我告訴我家狗我想尿尿它要帶我去，預計1830回家"}
 				//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!"+txt+"  "+event.Source.UserID+"   "+event.ReplyToken)).Do(); err != nil {
 				//	log.Print(err)
 				//}
